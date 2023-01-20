@@ -1,0 +1,13 @@
+{
+    "image": "mcr.microsoft.com/devcontainers/universal:2",
+    "customizations": {
+      "vscode": {
+        "extensions": ["hashicorp.terraform"]
+      }
+    },
+    "features": {
+      "ghcr.io/devcontainers/features/aws-cli:1": {},
+      "ghcr.io/devcontainers-contrib/features/terraform-asdf:2": {},
+      "ghcr.io/devcontainers-contrib/features/terraform-ls-asdf:2": {}
+    }
+  }
