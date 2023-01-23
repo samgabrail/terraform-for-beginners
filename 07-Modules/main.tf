@@ -38,7 +38,7 @@ resource "aws_key_pair" "mykey" {
 
 resource "aws_instance" "webserver" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = "t2.micro"
+  instance_type = var.instance_type
   key_name      = aws_key_pair.mykey.key_name
 }
 
