@@ -40,6 +40,34 @@ resource "aws_instance" "webserver" {
   ami           = data.aws_ami.ubuntu.id
   instance_type = var.instance_type
   key_name      = aws_key_pair.mykey.key_name
+  vpc_security_group_ids = [aws_security_group.security_group1.id]
+  user_data                   = file("install_libraries.sh")
+  user_data_replace_on_change = true
+}
+
+resource "aws_security_group" "security_group1" {
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "SSH Ingress"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+  }
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "HTTP Ingress"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
 }
 
 module "tls" {
