@@ -43,10 +43,34 @@ resource "aws_key_pair" "mykey" {
 
 resource "aws_instance" "webserver" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
+  instance_type = var.my_instance_type
   key_name      = aws_key_pair.mykey.key_name
+  vpc_security_group_ids = [aws_security_group.security_group1.id]
 }
+
+resource "aws_security_group" "security_group1" {
+  ingress {
+    cidr_blocks = ["0.0.0.0/0"]
+    description = "SSH Ingress"
+    from_port   = 22
+    to_port     = 22
+    protocol    = "tcp"
+  }
+
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+}
+
 
 # Getting the output from private key is via this command below:
 
 # terraform output -raw private_key
+
+# To ssh into the machine:
+# terraform output -raw private_key > myKey.pem
+# sudo chmod 400 myKey.pem
+# ssh -i myKey.pem ubuntu@$(terraform output -raw public_ip)

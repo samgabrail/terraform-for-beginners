@@ -13,7 +13,7 @@ provider "aws" {
 
 resource "aws_instance" "webserver" {
   ami           = "ami-08d4ac5b634553e16"
-  instance_type = var.instance_type
+  instance_type = var.my_instance_type
 }
 
 output "public_ip" {

@@ -31,22 +31,7 @@ data "aws_ami" "ubuntu" {
   owners = ["099720109477"] # Canonical https://ubuntu.com/server/docs/cloud-images/amazon-ec2
 }
 
-resource "tls_private_key" "mykey" {
-  algorithm = "RSA"
-  rsa_bits  = 4096
-}
-
-resource "aws_key_pair" "mykey" {
-  key_name   = "mykey.pem"
-  public_key = tls_private_key.mykey.public_key_openssh
-}
-
 resource "aws_instance" "webserver" {
   ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  key_name      = aws_key_pair.mykey.key_name
+  instance_type = var.my_instance_type
 }
-
-# Getting the output from private key is via this command below:
-
-# terraform output -raw private_key
