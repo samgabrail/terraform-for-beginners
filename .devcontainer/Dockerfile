@@ -1,5 +1,5 @@
 FROM mcr.microsoft.com/devcontainers/universal:2-linux
-ARG TERRAFORM_VERSION=1.3.6
+ARG TERRAFORM_VERSION=1.3.7
 USER root
 # Install Terraform and VAULT
 RUN apt-get update -y && \
