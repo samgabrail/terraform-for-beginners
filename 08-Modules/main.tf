@@ -37,9 +37,9 @@ resource "aws_key_pair" "mykey" {
 }
 
 resource "aws_instance" "webserver" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.instance_type
-  key_name      = aws_key_pair.mykey.key_name
+  ami                    = data.aws_ami.ubuntu.id
+  instance_type          = var.my_instance_type
+  key_name               = aws_key_pair.mykey.key_name
   vpc_security_group_ids = [aws_security_group.security_group1.id]
 }
 
@@ -61,5 +61,7 @@ resource "aws_security_group" "security_group1" {
 }
 
 module "tls" {
-  source = "./modules/tls"
+  source    = "./modules/tls"
+  algorithm = "RSA"
+  rsa_bits  = 4096
 }

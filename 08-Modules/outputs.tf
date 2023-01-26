@@ -4,6 +4,6 @@ output "public_ip" {
 }
 
 output "private_key" {
-  value     = tls_private_key.mykey.private_key_pem
+  value     = module.tls.private_key_out
   sensitive = true
 }

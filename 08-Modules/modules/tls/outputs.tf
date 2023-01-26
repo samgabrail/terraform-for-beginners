@@ -1,4 +1,4 @@
-output "private_key" {
+output "private_key_out" {
   value     = tls_private_key.mykey.private_key_pem
   sensitive = true
 }
