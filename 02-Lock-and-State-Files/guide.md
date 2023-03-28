@@ -17,7 +17,7 @@ terraform init
 terraform apply --auto-approve
 ```
 
-3. Examine the `.terraform.lock.hcl`
+3. Examine the `.terraform.lock.hcl` file
 
 The `.terraform.lock.hcl` file is a generated file that Terraform creates when it installs provider dependencies for a Terraform configuration. It contains a list of all the provider dependencies, including their version constraints, that were installed for the Terraform configuration.
 
@@ -27,7 +27,7 @@ When Terraform applies a configuration, it reads the `.terraform.lock.hcl` file 
 
 It is recommended to include the `.terraform.lock.hcl` file in version control along with the Terraform configuration to ensure that all team members and deployment environments are using the same provider versions.
 
-4. Examine the `terraform.tfstate`
+4. Examine the `terraform.tfstate` file
 
 The `terraform.tfstate` file is a generated file that Terraform uses to keep track of the current state of the resources managed by a Terraform configuration. This file contains information about the resources that were created or modified, their current state, and any metadata that is associated with them.
 

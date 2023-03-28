@@ -20,7 +20,7 @@ terraform apply --auto-approve
 You will get prompted for the External and Internal ports.
 Use 8080 for the external port and 80 for the internal port.
 
-3. Examine the `main.tf`
+3. Examine the `main.tf` file
 
 Notice how we declare variables using the `variables` block and reference variables using var.<variable_name>.
 
