@@ -2,7 +2,7 @@
 
 In this lab we learn about Variables.
 
-## Commands
+## Instructions
 
 1. Change directory into the `04-Variables-Continued` directory:
 
@@ -29,7 +29,7 @@ This file is used to assign values to our variables and will override the defaul
 
 5. Now go ahead and destroy the environment.
 
-```hcl
+```bash
 terraform destroy --auto-approve
 ```
 

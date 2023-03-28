@@ -2,7 +2,7 @@
 
 In this lab we learn about Variables.
 
-## Commands
+## Instructions
 
 1. Change directory into the `03-Variables` directory:
 
@@ -36,7 +36,7 @@ terraform apply -var 'external_port=8080' -var 'internal_port=80'
 
 5. Now go ahead and destroy the environment using the `-destroy` flag which is another way of destroying the environment that is often used in CI/CD pipelines.
 
-```hcl
+```bash
 terraform apply -destroy -var 'external_port=8080' -var 'internal_port=80'
 ```
 

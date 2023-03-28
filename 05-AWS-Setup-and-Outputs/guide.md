@@ -1,35 +1,47 @@
-# Variables
+# AWS Setup and Outputs
 
-In this lab we learn about Variables.
+In this lab we learn about AWS with Terraform and Terraform Outputs.
 
-## Commands
+## Instructions
 
-1. Change directory into the `04-Variables-Continued` directory:
+1. Change directory into the `05-AWS-Setup-and-Outputs` directory:
 
 ```bash
-cd 04-Variables-Continued
+cd 05-AWS-Setup-and-Outputs
 ```
 
-2. Initialize and Terraform Apply
+2. Create environment variables to connect to AWS
+
+```bash
+export AWS_ACCESS_KEY_ID=your_value
+export AWS_SECRET_ACCESS_KEY=your_value
+```
+
+3. Initialize Terraform Plan, and Terraform Apply
 
 ```bash
 terraform init
+terraform plan
 terraform apply --auto-approve
 ```
 
-3. Examine the `variables.tf` file
+Notice the output of Terraform gives us the public IP of the EC2 instance.
 
-Notice that we just moved the 4 variable blocks here. Terraform doesn't care how many `.tf` files you have, it will merge all of these files that live in the same directory.
+4. Examine the `main.tf` file
 
-This `variables.tf` file is used to declare our variables with reasonable defaults if applicable.
+We are now using the `aws` provider. Also the `output` block is referencing the `public_ip` attribute of the EC2 instance likie this: `aws_instance.webserver.public_ip`
 
-4. Examine the `terraform.tfvars` file
+5. Examine the `variables.tf` file
 
-This file is used to assign values to our variables and will override the default values assigned in the `variables.tf` file.
+We have 2 variables defined with defaults:
+- region
+- my_instance_type
 
-5. Now go ahead and destroy the environment.
+6. Check the EC2 instance that got created in the AWS console
 
-```hcl
+7. Now go ahead and destroy the environment.
+
+```bash
 terraform destroy --auto-approve
 ```
 

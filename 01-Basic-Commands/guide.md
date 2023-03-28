@@ -2,7 +2,7 @@
 
 In this lab we learn the very basic Terraform commands.
 
-## Commands
+## Instructions
 
 1. Change directory into the 01-Basic-Commands directory:
 

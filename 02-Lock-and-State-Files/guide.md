@@ -2,7 +2,7 @@
 
 In this lab we learn about the Lock and State files.
 
-## Commands
+## Instructions
 
 1. Change directory into the 02-Lock-and-State-Files directory:
 
@@ -39,7 +39,7 @@ It is important to store the `terraform.tfstate` file securely and consistently,
 
 5. Destroy the environment and re-examine the state file to see what changed. Be very careful when using the `--auto-approve` flag with `terraform apply` or `terraform destroy`. This should not be used in production as it will override the prompt.
 
-```hcl
+```bash
 terraform destroy --auto-approve
 ```
 
