@@ -37,10 +37,10 @@ resource "aws_key_pair" "mykey" {
 }
 
 resource "aws_instance" "webserver" {
-  ami           = data.aws_ami.ubuntu.id
-  instance_type = var.my_instance_type
-  key_name      = aws_key_pair.mykey.key_name
-  vpc_security_group_ids = [aws_security_group.security_group1.id]
+  ami                         = data.aws_ami.ubuntu.id
+  instance_type               = var.my_instance_type
+  key_name                    = aws_key_pair.mykey.key_name
+  vpc_security_group_ids      = [aws_security_group.security_group1.id]
   user_data                   = file("install_libraries.sh")
   user_data_replace_on_change = true
 }

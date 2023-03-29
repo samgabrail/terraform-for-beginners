@@ -25,13 +25,13 @@ resource "docker_container" "nginx_container" {
 variable "image_name" {
   type        = string
   description = "The name of the Docker image"
-  default = "nginx"
+  default     = "nginx"
 }
 
 variable "image_tag" {
   type        = string
   description = "The tag of the Docker image"
-  default  = "1.23.3"
+  default     = "1.23.3"
 }
 
 variable "internal_port" {
