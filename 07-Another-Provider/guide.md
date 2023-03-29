@@ -31,7 +31,13 @@ Notice the `private_key` in the output is marked as sensitive because we specifi
 
 In `main.tf` we now have another provider `tls`. We use the resource `tls_private_key` to create a private/public key pair. Then we create an `aws_key_pair` resource in AWS referencing the public key with: `tls_private_key.mykey.public_key_openssh`
 
-Also we added a security group to allow SSH into the EC2 instance.
+Also, notice that we created a security group to allow ssh inbound to the instance. This is done with the aws_security_group resource. You then reference it in the aws_instance resource like this:
+
+```hcl
+vpc_security_group_ids = [aws_security_group.security_group1.id]
+```
+
+The square brackets are used because vpc_security_group_ids requires a list of security group ids.
 
 5. Examine the state file
 

@@ -65,7 +65,34 @@ Now take a look at the `tls` directory under the `modules` directory. As a good 
 
 Notice how there is nothing special about a module. It's the same Terraform code that we've learned so far.
 
-6. Now go ahead and destroy the environment.
+6. Flow of Data
+
+Notice how the output gets passed from the tls module to the root module and out to the CLI. Check the output of the tls module:
+
+```hcl
+output "private_key" {
+  value     = tls_private_key.mykey.private_key_pem
+  sensitive = true
+}
+output "public_key_out" {
+  value = tls_private_key.mykey.public_key_openssh
+}
+```
+
+Check the output of the root module:
+
+```hcl
+output "public_ip" {
+  value       = aws_instance.webserver.public_ip
+  description = "EC2 Public IP"
+}
+output "private_key" {
+  value     = module.tls.private_key
+  sensitive = true
+}
+```
+
+7. Now go ahead and destroy the environment.
 
 ```bash
 terraform destroy --auto-approve
